@@ -29,6 +29,14 @@ async function Inserta_datos_en_colección(colección, url) {
         const database = client.db(dbName);
         const colect = database.collection(colección);
 
+        // Vamos a realizar la inserción si no existe la colección en la Base de Datos.
+        // Si los insertase en cada ejecución, las consultas serían infinitas.
+        const coleccionesExistentes = await database.listCollections({ name: colección }).toArray();
+
+        if (coleccionesExistentes.length > 0) {
+            return `La colección "${colección}" ya existe. No se insertaron datos.`;
+        }
+
         const options = { ordered: true };
 
         const result = await colect.insertMany(datos, options);
