@@ -1,0 +1,30 @@
+
+/* Estilos para las tarjetas en la página de inicio */
+.home-card .card-img-top {
+    height: 350px; /* Altura para las imágenes en el home */
+    object-fit: cover; /* Mantiene la proporción de la imagen, recortando si es necesario */
+}
+
+/* Estilos para las tarjetas en la página de categoría */
+.categoria-card .card-img-top {
+    height: 500px; /* Altura para las imágenes en la categoría */
+    object-fit: cover; /* Mantiene la proporción de la imagen, recortando si es necesario */
+}
+
+/* Espaciado entre las tarjetas */
+.card {
+    margin-bottom: 20px; /* Espaciado entre las tarjetas */
+}
+
+/* Flexbox para alinear los elementos dentro de la tarjeta */
+.card-body {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    justify-content: space-between; /* Alinea los elementos para ocupar todo el espacio disponible */
+    height: 100%; /* Asegúrate de que la tarjeta ocupe el 100% de la altura */
+}
+
+/* Espaciado adicional para el botón */
+.btn {
+    margin-top: auto; /* Empuja el botón hacia abajo */
+}

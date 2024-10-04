@@ -54,6 +54,7 @@ Inserta_datos_en_colección('productos', 'https://fakestoreapi.com/products')
     .then((r) => console.log(`Todo bien: ${r}`))
     .then(() => Inserta_datos_en_colección('usuarios', 'https://fakestoreapi.com/users'))
     .then((r) => console.log(`Todo bien: ${r}`))
+    .then(() => client.close() )
     .catch((err) => console.error('Algo mal: ', err.errorResponse));
 
 console.log('Lo primero que pasa');

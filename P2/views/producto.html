@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <div class="container mt-4">
+        <h1>{{ producto.title }}</h1> <!-- Asegúrate de que esto se esté mostrando correctamente -->
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ producto.image }}" alt="{{ producto.title }}" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>${{ producto.price }}</h2>
+                <p>{{ producto.description }}</p>
+                <button class="btn btn-primary">Añadir al Carrito</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -18,14 +18,14 @@ app.set('view engine', 'html')
 
 app.use(express.static('public'))     // directorio public para archivos
 
-// test para el servidor
-app.get("/hola", (req, res) => {
-  res.render('test.html', {a:'x', b:2});
-});
+/*// test para el servidor
+app.get("/", (req, res) => {
+  res.render('home.html', {a:'x', b:2});
+});*/
 
-/*// Las demas rutas con código en el directorio routes
+// Las demas rutas con código en el directorio routes
 import TiendaRouter from "./routes/router_tienda.js"
-app.use("/", TiendaRouter);*/
+app.use("/", TiendaRouter);
 
 
 const PORT = process.env.PORT || 8000;
