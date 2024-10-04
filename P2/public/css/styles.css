@@ -1,3 +1,43 @@
+html, body {
+    height: 100%; /* Hacer que el html y body ocupen el 100% de la pantalla */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Crear un diseño en columna */
+    min-height: 100vh; /* Garantizar que el body ocupe toda la altura de la ventana */
+    background-color: #ffecb3; 
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    font-family: Arial, sans-serif; /* Establece una fuente para la página */
+}
+
+.content {
+    flex: 1; /* El contenido principal ocupa todo el espacio disponible */
+    margin-bottom: 50px; /* Espacio entre contenido y footer */
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.card {
+    border: 3px solid #ccc; /* Borde sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animaciones */
+}
+
+/* Efecto hover (al pasar el ratón) */
+.card:hover {
+    transform: translateY(-5px); /* Eleva ligeramente la tarjeta */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
 
 /* Estilos para las tarjetas en la página de inicio */
 .home-card .card-img-top {
@@ -7,7 +47,7 @@
 
 /* Estilos para las tarjetas en la página de categoría */
 .categoria-card .card-img-top {
-    height: 500px; /* Altura para las imágenes en la categoría */
+    height: 550px; /* Altura para las imágenes en la categoría */
     object-fit: cover; /* Mantiene la proporción de la imagen, recortando si es necesario */
 }
 
@@ -27,4 +67,75 @@
 /* Espaciado adicional para el botón */
 .btn {
     margin-top: auto; /* Empuja el botón hacia abajo */
+}
+
+/* Estilo para botones primarios */
+.btn-primary {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno (top/bottom, left/right) */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease, transform 0.2s; /* Animaciones suaves */
+}
+
+/* Efecto hover (al pasar el ratón) */
+.btn-primary:hover {
+    background-color: #0056b3; /* Color de fondo más oscuro */
+    transform: scale(1.05); /* Escala el botón ligeramente */
+}
+
+/* Efecto active (cuando se hace clic) */
+.btn-primary:active {
+    background-color: #004085; /* Color de fondo aún más oscuro */
+    transform: scale(0.95); /* Hace que el botón se vea más pequeño al hacer clic */
+}
+
+/* Estilo para botones de éxito */
+.btn-success {
+    background-color: #28a745; /* Color de fondo verde */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno (top/bottom, left/right) */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease, transform 0.2s; /* Animaciones suaves */
+}
+
+/* Efecto hover (al pasar el ratón) para botones de éxito */
+.btn-success:hover {
+    background-color: #218838; /* Color de fondo más oscuro */
+    transform: scale(1.05); /* Escala el botón ligeramente */
+}
+
+/* Efecto active (cuando se hace clic) para botones de éxito */
+.btn-success:active {
+    background-color: #1e7e34; /* Color de fondo aún más oscuro */
+    transform: scale(0.95); /* Hace que el botón se vea más pequeño al hacer clic */
+}
+
+.separator {
+    border: 1px solid #ddd; /* Color de la línea */
+    margin: 10px 0; /* Margen vertical */
+}
+
+/* Estilo para las imágenes */
+.img-config {
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+    border: 5px solid #ddd; /* Borde de 5px con color gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 1spx; /* Espacio interno entre el borde y la imagen */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor de la imagen */
+}
+
+/* Estilo para el precio */
+.precio {
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+h1 {
+    font-weight: bold;
 }

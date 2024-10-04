@@ -2,15 +2,17 @@
 
 {% block contenido %}
     <div class="container mt-4">
-        <h1>{{ producto.title }}</h1> <!-- Asegúrate de que esto se esté mostrando correctamente -->
         <div class="row">
             <div class="col-md-6">
-                <img src="{{ producto.image }}" alt="{{ producto.title }}" class="img-fluid">
+                <img src="{{ producto.image }}" alt="{{ producto.title }}" class="img-fluid img-config">
             </div>
             <div class="col-md-6">
-                <h2>${{ producto.price }}</h2>
+                <h1>{{ producto.title }}</h1>
+                <h2 class="precio">${{ producto.price }}</h2>
                 <p>{{ producto.description }}</p>
-                <button class="btn btn-primary">Añadir al Carrito</button>
+                <p><strong>Rating:</strong> {{ producto.rating.rate }} / 5</p>
+                <p><strong>Número de Reseñas:</strong> {{ producto.rating.count }} reseñas</p>
+                <button class="btn btn-success">Añadir al Carrito</button>
             </div>
         </div>
     </div>

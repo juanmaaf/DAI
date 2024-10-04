@@ -12,7 +12,9 @@
                         <img src="{{ producto.image }}" class="card-img-top" alt="{{ producto.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ producto.title }}</h5>
-                            <p class="card-text">${{ producto.price }}</p>
+                            <p class="card-text precio">${{ producto.price }}</p>
+                            <div class="flex-grow-1"></div>
+                            <hr class="separator">
                             <a href="/producto/{{ producto._id }}" class="btn btn-primary">Ver Detalles</a>
                         </div>
                     </div>

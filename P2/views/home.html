@@ -7,13 +7,15 @@
         <!-- Listar categorías -->
         {% for categoria in categorias %}
         <div class="col-md-3 mb-4 home-card">
-            <div class="card h-100">
+          <div class="card h-100">
               <img src="{{ categoria.imageUrl }}" class="card-img-top" alt="{{ categoria.name | capitalize }}">
               <div class="card-body">
-                <h5 class="card-title">{{ categoria.name | capitalize }}</h5>
-                <a href="/categoria/{{ categoria.name }}" class="btn btn-primary">Ver productos</a>
+                  <h5 class="card-title">{{ categoria.name | capitalize }}</h5>
+                  <div class="flex-grow-1"></div>
+                  <hr class="separator">
+                  <a href="/categoria/{{ categoria.name }}" class="btn btn-primary">Ver Productos</a>
               </div>
-            </div>
+          </div>
         </div>
         {% endfor %}
     </div>

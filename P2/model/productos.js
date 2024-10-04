@@ -24,8 +24,19 @@ const ProductosSchema = new mongoose.Schema({
   "description": {
     "type": "String",
     "required": true
+  },
+  "rating": {
+    "rate": {
+      "type": "Number",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "count": {
+      "type": "Number",
+      "default": 0
+    }
   }
-
 })
 
 const Productos = mongoose.model("productos", ProductosSchema);
