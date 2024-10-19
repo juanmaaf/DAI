@@ -12,7 +12,13 @@
                 <p>{{ producto.description }}</p>
                 <p><strong>Rating:</strong> {{ producto.rating.rate }} / 5</p>
                 <p><strong>Número de Reseñas:</strong> {{ producto.rating.count }} reseñas</p>
-                <button class="btn btn-success">Añadir al Carrito</button>
+                
+                <!-- Formulario para añadir producto al carrito -->
+                <form action="/agregar-al-carrito" method="POST">
+                    <!-- Campo oculto con el ID del producto -->
+                    <input type="hidden" name="productoId" value="{{ producto._id }}">
+                    <button type="submit" class="btn btn-success">Añadir al Carrito</button>
+                </form>
             </div>
         </div>
     </div>

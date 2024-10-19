@@ -1,36 +1,10 @@
 import express from "express";
 import Productos from "../model/productos.js";
 const router = express.Router();
-      
-// router.get('/', async (req, res)=>{
-//   try {
-//     const productos = await Productos.find({})   // todos los productos
-//     res.render('home.html', { productos })    // ../views/portada.html, 
-//   } catch (err) {                                // se le pasa { productos:productos }
-//     res.status(500).send({err})
-//   }
-// })
 
-// Ruta para la búsqueda de productos
-// router.get('/buscar', async (req, res) => {
-//   const searchQuery = req.query.q;  // Obtener el término de búsqueda de la query string
-  
-//   try {
-//     let productos;
-    
-//     if (searchQuery) {
-//       // Filtrar productos que coincidan con el término de búsqueda usando una expresión regular
-//       productos = await Productos.find({ name: { $regex: searchQuery, $options: "i" } });
-//     } else {
-//       productos = await Productos.find({});
-//     }
-
-//     // Renderizar la vista con los resultados
-//     res.render('home.html', { productos });
-//   } catch (err) {
-//     res.status(500).send({ err });
-//   }
-// });
+function obtenerCarrito(req) {
+  return req.session.carrito || [];
+}
 
 router.get('/', async (req, res) => {
   try {
@@ -41,9 +15,12 @@ router.get('/', async (req, res) => {
       { name: "electronics", imageUrl: "/images/electronica.jpg" },
       { name: "jewelery", imageUrl: "/images/joyas.jpg" }
     ];
+    // Obtener el carrito desde la sesión
+    const carrito = obtenerCarrito(req);
 
-    // Renderizar la vista de la portada con las categorías
-    res.render('home.html', { categorias });
+    // Renderizar la vista de la portada con las categorías y el carrito
+    res.render('home.html', { categorias, carrito });
+
   } catch (err) {
     res.status(500).send({ err });
   }
@@ -57,8 +34,11 @@ router.get('/categoria/:categoria', async (req, res) => {
     // Obtener productos de la categoría solicitada
     const productos = await Productos.find({ category: categoria });
     
+    // Obtener el carrito desde la sesión
+    const carrito = obtenerCarrito(req);
+
     // Renderizar la vista para la categoría con los productos
-    res.render('categoria.html', { categoria, productos });
+    res.render('categoria.html', { categoria, productos, carrito });
   } catch (err) {
     res.status(500).send({ err });
   }
@@ -72,27 +52,99 @@ router.get('/producto/:id', async (req, res) => {
     if (!producto) {
       return res.status(404).send('Producto no encontrado');
     }
-    res.render('producto.html', { producto });
+
+    // Obtener el carrito desde la sesión
+    const carrito = obtenerCarrito(req);
+
+    res.render('producto.html', { producto, carrito });
   } catch (err) {
     res.status(500).send({ err });
   }
 });
 
-router.get('/buscar', async (req, res) => {
+// Ruta POST para la búsqueda
+router.post('/buscar', async (req, res) => {
   try {
     // Capturamos el término de búsqueda enviado por el formulario
-    const query = req.query.q || ''; // req.query.q accede al valor de búsqueda en la URL
+    const query = req.body.q || ''; // req.body.q accede al valor enviado en el formulario
 
-    // Usamos un $regex para realizar una búsqueda parcial en el título del producto
-    const productos = await Productos.find({ 
-      title: { $regex: query, $options: 'i' } // Búsqueda insensible a mayúsculas y minúsculas en el título
+    // Usamos un $regex para realizar una búsqueda parcial en el título o descripción del producto
+    const productos = await Productos.find({
+      $or: [
+        { title: { $regex: query, $options: 'i' } },  // Búsqueda en el título (insensible a mayúsculas/minúsculas)
+        { description: { $regex: query, $options: 'i' } }  // Búsqueda en la descripción (insensible a mayúsculas/minúsculas)
+      ]
     });
 
+    // Obtener el carrito desde la sesión
+    const carrito = obtenerCarrito(req);
+
     // Renderizamos la vista de resultados de búsqueda, pasando los productos y el término de búsqueda
-    res.render('buscar.html', { productos, query });
+    res.render('buscar.html', { productos, query, carrito });
   } catch (err) {
     res.status(500).send({ err });
   }
+});
+
+// Ruta para agregar al carrito
+router.post("/agregar-al-carrito", async (req, res) => {
+  const productoId = req.body.productoId;
+
+  // Verificamos si ya existe un carrito en la sesión, si no, lo creamos
+  if (!req.session.carrito) {
+    req.session.carrito = [];
+  }
+
+  // Buscar el producto por ID en la base de datos
+  try {
+    const producto = await Productos.findById(productoId);
+
+    // Si el producto existe, lo añadimos al carrito
+    if (producto) {
+      req.session.carrito.push(producto);
+      console.log(`Producto añadido al carrito: ${producto.title}`);
+    }
+
+    // Redirigir al usuario a la página del carrito
+    res.redirect('/carrito');
+  } catch (err) {
+    console.error('Error añadiendo al carrito:', err);
+    res.status(500).send('Error añadiendo al carrito');
+  }
+});
+
+// Ruta para eliminar del carrito
+router.post('/eliminar-del-carrito', (req, res) => {
+  const productoId = req.body.productoId;
+
+  // Si el carrito existe en la sesión, buscamos y eliminamos el producto por su ID
+  if (req.session.carrito) {
+    req.session.carrito = req.session.carrito.filter(producto => producto._id != productoId);
+  }
+
+  // Verificar si el carrito está vacío
+  if (req.session.carrito.length === 0) {
+    // Si el carrito está vacío, redirigimos al home
+    return res.redirect('/');
+  }
+
+  // Si el carrito no está vacío, redirigimos al carrito
+  res.redirect('/carrito');
+});
+
+// Ruta para ver el carrito
+router.get("/carrito", (req, res) => {
+  const carrito = req.session.carrito || [];  // Obtener el carrito de la sesión, si no hay, devolver un array vacío
+
+  if (carrito.length === 0) {
+    // Si el carrito está vacío, redirigimos al home
+    return res.redirect('/');
+  }
+
+  // Calcular el total del carrito
+  const total = carrito.reduce((sum, producto) => sum + producto.price, 0);
+
+  res.render("carrito.html", { carrito, total });
 });
 
 export default router

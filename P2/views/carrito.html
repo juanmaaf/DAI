@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <div class="container mt-4">
+        <h1>Carrito de Compras</h1>
+        <ul class="list-group">
+            {% for producto in carrito %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <!-- Contenedor para la imagen y el título -->
+                    <div class="d-flex align-items-center">
+                        <img src="{{ producto.image }}" alt="{{ producto.title }}" class="img-fluid" style="width: 80px; height: auto;"> <!-- Imagen más grande -->
+                        <span class="ms-3 fs-5">{{ producto.title }}</span> <!-- Título más grande -->
+                    </div>
+        
+                    <!-- Contenedor para el precio y el botón de eliminar -->
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-primary fs-5 me-3">${{ producto.price }}</span> <!-- Precio más grande -->
+                        <form action="/eliminar-del-carrito" method="POST" style="display:inline;">
+                            <input type="hidden" name="productoId" value="{{ producto._id }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="mt-4">
+            <h3>Total: ${{ total }}</h3>
+            <button class="btn btn-success">Proceder al Pago</button>
+        </div>
+    </div>
+{% endblock %}
