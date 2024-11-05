@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import bcrypt from 'bcrypt';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,6 +36,13 @@ async function Inserta_datos_en_colección(colección, url) {
 
         if (coleccionesExistentes.length > 0) {
             return `La colección "${colección}" ya existe. No se insertaron datos.`;
+        }
+
+        if (colección === 'usuarios') {
+            for (let usuario of datos) {
+                const saltRounds = 10;
+                usuario.password = await bcrypt.hash(usuario.password, saltRounds);  // Cifrar contraseña
+            }
         }
 
         const options = { ordered: true };

@@ -1,6 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken"
 import Usuarios from "../model/usuarios_bd.js";
+import bcrypt from 'bcrypt';
+
 const router = express.Router();
 
 function obtenerCarrito(req) {
@@ -32,8 +34,14 @@ router.post('/login', async (req, res)=> {
             return res.status(401).render("login.html", { error: "Usuario no encontrado" });
         }
     
-        // Comprobar si el password es correcto (sin encriptar)
-        if (password !== user.password) {
+        // // Comprobar si el password es correcto (sin encriptar)
+        // if (password !== user.password) {
+        //     return res.status(401).render("login.html", { error: "Contraseña incorrecta" });
+        // }
+
+        // Comprobar si la contraseña es correcta
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) {
             return res.status(401).render("login.html", { error: "Contraseña incorrecta" });
         }
     
@@ -51,12 +59,14 @@ router.post('/login', async (req, res)=> {
 })
 
 router.get('/logout', (req, res) => {
-    const username = req.username;  // Usuario autenticado
+    // Obtener el user
+    const usuario = req.username || null;
+    
     // Obtener el carrito desde la sesión
     const carrito = obtenerCarrito(req);
 
     // Limpiar cookie y redirigir a página de despedida
-    res.clearCookie('access_token').render('despedida.html', { usuario: username, carrito });
+    res.clearCookie('access_token').render('despedida.html', { usuario, carrito });
 });
 
 export default router
