@@ -26,6 +26,11 @@ const UsuariosSchema = new mongoose.Schema({
       "type": "String",
       "required": true
     }
+  },
+  "admin": {
+    "type": "Boolean",
+    "default": false,
+    "required": false
   }
 })
 

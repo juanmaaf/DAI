@@ -13,12 +13,32 @@
                 <p><strong>Rating:</strong> {{ producto.rating.rate }} / 5</p>
                 <p><strong>Número de Reseñas:</strong> {{ producto.rating.count }} reseñas</p>
                 
-                <!-- Formulario para añadir producto al carrito -->
-                <form action="/agregar-al-carrito" method="POST">
-                    <!-- Campo oculto con el ID del producto -->
-                    <input type="hidden" name="productoId" value="{{ producto._id }}">
-                    <button type="submit" class="btn btn-success">Añadir al Carrito</button>
-                </form>
+                <!-- Condición para mostrar el formulario de edición solo para administradores -->
+                {% if admin %}
+                    <div class="mb-4">
+                        <h3 class="text-dark">Editar Producto</h3>
+                        <form action="/productos/{{ producto._id }}/editar" method="POST" class="border p-4 rounded shadow">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Título</label>
+                                <input type="text" id="title" name="title" class="form-control" 
+                                    value="{{ producto.title }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Precio</label>
+                                <input type="number" id="price" name="price" class="form-control" 
+                                    step="0.01" value="{{ producto.price }}" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+                        </form>
+                    </div>
+                {% else %}
+                    <!-- Formulario para añadir producto al carrito (solo para usuarios no administradores) -->
+                    <form action="/agregar-al-carrito" method="POST">
+                        <!-- Campo oculto con el ID del producto -->
+                        <input type="hidden" name="productoId" value="{{ producto._id }}">
+                        <button type="submit" class="btn btn-success">Añadir al Carrito</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>

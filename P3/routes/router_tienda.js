@@ -64,7 +64,10 @@ router.get('/producto/:id', async (req, res) => {
     // Obtener el user
     const usuario = req.username || null;
 
-    res.render('producto.html', { producto, carrito, usuario });
+    // Obtener si es admin
+    const admin = req.admin || null;
+
+    res.render('producto.html', { producto, carrito, usuario, admin });
   } catch (err) {
     res.status(500).send({ err });
   }
@@ -159,6 +162,25 @@ router.get("/carrito", (req, res) => {
   const total = carrito.reduce((sum, producto) => sum + producto.price, 0);
 
   res.render("carrito.html", { carrito, total, usuario });
+});
+
+router.post('/productos/:id/editar', async (req, res) => {
+  const { title, price } = req.body;
+  const { id } = req.params;
+
+  try {
+    // Activa las validaciones y devuelve el nuevo documento
+    const productoActualizado = await Productos.findByIdAndUpdate(id, { title, price }, { new: true, runValidators: true }); 
+
+    if (!productoActualizado) {
+      return res.status(404).send("Producto no encontrado");
+    }
+
+    res.redirect(`/producto/${id}`);
+  } catch (error) {
+    console.error("Error al actualizar el producto:", error);
+    res.status(400).send(error.message); // Mensaje de error si falla la validación
+  }
 });
 
 export default router

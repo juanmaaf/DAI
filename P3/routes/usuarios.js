@@ -45,12 +45,12 @@ router.post('/login', async (req, res)=> {
             return res.status(401).render("login.html", { error: "Contraseña incorrecta" });
         }
     
-        const token = jwt.sign({usuario: user.username}, process.env.SECRET_KEY)
+        const token = jwt.sign({ usuario: user.username, admin: user.admin }, process.env.SECRET_KEY)
 
         res.cookie("access_token", token, {            // cookie en el response
         httpOnly: true,
         secure: process.env.IN === 'production'      // en producción, solo con https
-        }).render("bienvenida.html", {usuario: user.username, carrito})
+        }).render("bienvenida.html", {usuario: user.username, admin: user.admin, carrito})
         
     } catch (err) {
         console.error('Error en el login:', err);
