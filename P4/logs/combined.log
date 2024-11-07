@@ -1,0 +1,7 @@
+2024-11-07T10:47:49.176Z info: Request: GET /api/ratings/
+2024-11-07T10:47:54.224Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-07T10:47:55.526Z info: Request: GET /api/ratings?desde=0&hasta=4
+2024-11-07T10:47:56.275Z info: Request: POST /api/ratings/672c775feabd4713c44b119f
+2024-11-07T10:47:57.352Z info: Request: GET /api/ratings/672c775f
+2024-11-07T10:47:57.354Z error: Error al obtener el rating: Cast to ObjectId failed for value "672c775f" (type string) at path "_id" for model "productos"
+2024-11-07T10:49:58.542Z info: Request: GET /api/ratings/

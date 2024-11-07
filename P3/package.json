@@ -2,7 +2,7 @@
   "name": "practica-dai-3",
   "version": "1.0",
   "author": "Yo",
-  "description": "Para llenar la BD con datos de prueba",
+  "description": "Gestion de Usuarios",
   "main": "seed.js",
   "type": "module",
   "scripts": {

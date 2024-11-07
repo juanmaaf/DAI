@@ -1,0 +1,34 @@
+html, body {
+    height: 100%; /* Hacer que el html y body ocupen el 100% de la pantalla */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Crear un diseño en columna */
+    min-height: 100vh; /* Garantizar que el body ocupe toda la altura de la ventana */
+    background-color: #ffecb3; 
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    font-family: Arial, sans-serif; /* Establece una fuente para la página */
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+/* Estilo para el precio */
+.precio {
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+p {
+    text-align: justify;
+}
