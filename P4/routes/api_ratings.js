@@ -35,8 +35,8 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// 3. POST /api/ratings/:id - Modificar el rating de un producto
-router.post('/:id', async (req, res) => {
+// 3. PUT /api/ratings/:id - Modificar el rating de un producto
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
     const { rate, count } = req.body;
 

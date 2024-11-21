@@ -5,3 +5,12 @@
 2024-11-07T10:47:57.352Z info: Request: GET /api/ratings/672c775f
 2024-11-07T10:47:57.354Z error: Error al obtener el rating: Cast to ObjectId failed for value "672c775f" (type string) at path "_id" for model "productos"
 2024-11-07T10:49:58.542Z info: Request: GET /api/ratings/
+2024-11-21T07:48:50.193Z info: Request: GET /api/ratings/
+2024-11-21T07:48:55.911Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:49:00.910Z info: Request: PUT /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:49:06.712Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:49:08.756Z info: Request: GET /api/ratings?desde=0&hasta=4
+2024-11-21T07:51:20.938Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:51:23.181Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:51:26.104Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-11-21T07:51:36.601Z info: Request: PUT /api/ratings/672c775feabd4713c44b119f
