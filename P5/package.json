@@ -1,0 +1,28 @@
+{
+  "name": "practica-dai-5",
+  "version": "1.0",
+  "author": "Yo",
+  "description": "DOM ratings",
+  "main": "seed.js",
+  "type": "module",
+  "scripts": {
+    "seed": "node  --env-file=.env seed.js",
+    "tienda": "node --watch --env-file=.env tienda.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "chokidar": "^3.6.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.0",
+    "node-fetch": "^3.3.2",
+    "nunjucks": "^3.2.4",
+    "winston": "^3.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0"
+  }
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="display-4">¡Bienvenido, {{ usuario }}!</h1>
+                <p class="lead">Has iniciado sesión correctamente.</p>
+                <hr class="my-4">
+                <p>Explora nuestras categorías de productos y aprovecha las mejores ofertas.</p>
+                <a class="btn btn-primary btn-lg" href="/" role="button">Ir a la Página Principal</a>
+                <a class="btn btn-danger btn-lg ms-3" href="/logout" role="button">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
