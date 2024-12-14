@@ -14,7 +14,7 @@ PUT http://localhost:8000/api/ratings/672c775feabd4713c44b119f
 Content-Type: application/json
 
 {
-  "rate": 4.6,
+  "rate": 4.8,
   "count": 102
 }
 

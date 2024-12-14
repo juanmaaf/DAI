@@ -48,8 +48,6 @@ router.put('/:id', async (req, res) => {
         { new: true, runValidators: true, fields: { rating: 1 } }
         );
 
-        if (!producto) return res.status(404).json({ message: "Producto no encontrado" });
-
         res.json(producto.rating);
     } catch (error) {
         logger.error("Error al actualizar el rating:", error);

@@ -14,3 +14,38 @@
 2024-11-21T07:51:23.181Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
 2024-11-21T07:51:26.104Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
 2024-11-21T07:51:36.601Z info: Request: PUT /api/ratings/672c775feabd4713c44b119f
+2024-11-21T08:16:55.759Z info: Request: PUT /api/ratings/672c775feabd4713c44b11
+2024-11-21T08:16:55.765Z error: Error al actualizar el rating: Cast to ObjectId failed for value "672c775feabd4713c44b11" (type string) at path "_id" for model "productos"
+2024-11-21T08:17:12.785Z info: Request: PUT /api/ratings/672c775feabd4713c4
+2024-11-21T08:17:12.786Z error: Error al actualizar el rating: Cast to ObjectId failed for value "672c775feabd4713c4" (type string) at path "_id" for model "productos"
+2024-11-21T08:18:03.527Z info: Request: PUT /api/ratings/672c775feabd4713c4
+2024-11-21T08:18:03.533Z error: Error al actualizar el rating: Cast to ObjectId failed for value "672c775feabd4713c4" (type string) at path "_id" for model "productos"
+2024-12-05T07:39:38.208Z info: Request: GET /%C3%A7
+2024-12-05T07:39:40.709Z info: Request: GET /
+2024-12-05T07:39:40.785Z info: Request: GET /favicon.ico
+2024-12-05T07:40:09.163Z info: Request: GET /login
+2024-12-05T07:40:27.730Z info: Request: POST /login
+2024-12-05T07:40:28.820Z info: Request: GET /
+2024-12-05T07:40:29.579Z info: Request: GET /categoria/men's%20clothing
+2024-12-05T07:40:30.542Z info: Request: GET /producto/672c775feabd4713c44b119f
+2024-12-05T07:40:35.376Z info: Request: GET /logout
+2024-12-05T07:40:36.118Z info: Request: GET /
+2024-12-05T07:42:40.379Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-12-05T07:42:42.715Z info: Request: PUT /api/ratings/672c775feabd4713c4
+2024-12-05T07:42:42.719Z error: Error al actualizar el rating: Cast to ObjectId failed for value "672c775feabd4713c4" (type string) at path "_id" for model "productos"
+2024-12-05T07:42:53.796Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-12-05T08:02:01.249Z info: Request: GET /
+2024-12-05T08:02:04.594Z info: Request: GET /categoria/men's%20clothing
+2024-12-05T08:02:06.347Z info: Request: GET /
+2024-12-05T08:24:15.466Z info: Request: GET /login
+2024-12-05T08:24:25.825Z info: Request: POST /login
+2024-12-05T08:24:26.459Z info: Request: GET /
+2024-12-05T08:24:28.077Z info: Request: GET /categoria/men's%20clothing
+2024-12-05T08:24:28.877Z info: Request: GET /producto/672c775feabd4713c44b119f
+2024-12-05T08:24:40.112Z info: Request: POST /productos/672c775feabd4713c44b119f/editar
+2024-12-05T08:24:40.123Z info: Request: GET /producto/672c775feabd4713c44b119f
+2024-12-05T08:24:43.441Z info: Request: GET /logout
+2024-12-05T08:24:44.506Z info: Request: GET /
+2024-12-05T08:24:49.470Z info: Request: GET /api/ratings/672c775feabd4713c44b119f
+2024-12-05T08:24:57.516Z info: Request: PUT /api/ratings/672c775feabd4713c44b119f
+2024-12-05T08:24:59.466Z info: Request: GET /api/ratings/672c775feabd4713c44b119f

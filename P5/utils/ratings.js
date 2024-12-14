@@ -120,57 +120,19 @@ function Vota(evt) {
 }
 
 function actualizarEstrellasOptimisticamente(contenedor, nuevoRate, nuevoCount) {
-    const stars = contenedor.querySelectorAll('.star');
-    const voteCount = contenedor.querySelector('.vote-count');
-
-    // Itera a través de las estrellas
-    stars.forEach((star, index) => {
-        if (index < Math.floor(nuevoRate)) {
-            // Marca como seleccionada las estrellas completas
-            star.classList.add('selected');
-            star.classList.remove('half');
-        } else if (index === Math.floor(nuevoRate) && nuevoRate % 1 !== 0) {
-            // Marca como media la estrella si es el punto decimal
-            star.classList.add('half');
-            star.classList.remove('selected');
-        } else {
-            // Elimina las clases de selección para las estrellas vacías
-            star.classList.remove('selected', 'half');
-        }
-    });
-
-    // Actualiza el número de votos
-    voteCount.textContent = `(${nuevoCount} votos)`;
-
-    // Sincroniza los atributos de datos del contenedor
+    const productoId = contenedor.dataset._id; 
+    const nuevoHtml = generarEstrellas(nuevoRate, nuevoCount, productoId);
+    contenedor.innerHTML = nuevoHtml; 
     contenedor.dataset.rate = nuevoRate;
     contenedor.dataset.count = nuevoCount;
+    agregarManejadorEstrellas(contenedor, productoId);
 }
 
 function revertirEstrellas(contenedor, rateAnterior, countAnterior) {
-    const stars = contenedor.querySelectorAll('.star');
-    const voteCount = contenedor.querySelector('.vote-count');
-
-    // Itera a través de las estrellas
-    stars.forEach((star, index) => {
-        if (index < Math.floor(rateAnterior)) {
-            // Marca como seleccionada las estrellas completas
-            star.classList.add('selected');
-            star.classList.remove('half');
-        } else if (index === Math.floor(rateAnterior) && rateAnterior % 1 !== 0) {
-            // Marca como media la estrella si es el punto decimal
-            star.classList.add('half');
-            star.classList.remove('selected');
-        } else {
-            // Elimina las clases de selección para las estrellas vacías
-            star.classList.remove('selected', 'half');
-        }
-    });
-
-    // Restaura el número de votos
-    voteCount.textContent = `(${countAnterior} votos)`;
-
-    // Restaura los atributos de datos
+    const productoId = contenedor.dataset._id; 
+    const nuevoHtml = generarEstrellas(rateAnterior, countAnterior, productoId);
+    contenedor.innerHTML = nuevoHtml; 
     contenedor.dataset.rate = rateAnterior;
     contenedor.dataset.count = countAnterior;
+    agregarManejadorEstrellas(contenedor, productoId);
 }
