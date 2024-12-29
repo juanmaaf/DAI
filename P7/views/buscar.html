@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <div class="container mt-4">
+        <h1>Resultados de búsqueda para "{{ query }}"</h1>
+        
+        <div class="row">
+            {% if productos.length > 0 %}
+                {% for producto in productos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ producto.image }}" class="redimensionar-imagen" alt="{{ producto.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ producto.title }}</h5>
+                            <div class="flex-grow-1"></div>
+                            <p class="card-text precio">${{ producto.price }}</p>
+                            <span class="stars" data-_id="{{producto._id}}"> 
+                                <span class="star" data-star="1" data-_id="{{producto._id}}">☆</span>
+                                <span class="star" data-star="2" data-_id="{{producto._id}}">☆</span>
+                                <span class="star" data-star="3" data-_id="{{producto._id}}">☆</span>
+                                <span class="star" data-star="4" data-_id="{{producto._id}}">☆</span>
+                                <span class="star" data-star="5" data-_id="{{producto._id}}">☆</span>
+                            </span>
+                            <div class="flex-grow-1"></div>
+                            <hr class="separator">
+                            <a href="/producto/{{ producto._id }}" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No se encontraron productos para "{{ query }}".</p>
+            {% endif %}
+        </div>
+    </div>
+    <script src="/utils/ratings.js"></script>
+{% endblock %}

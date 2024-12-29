@@ -1,34 +1,28 @@
 {
-  "name": "p6",
-  "private": true,
-  "version": "0.0.0",
+  "name": "practica-dai-5",
+  "version": "1.0",
+  "author": "Yo",
+  "description": "DOM ratings",
+  "main": "seed.js",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "seed": "node  --env-file=.env seed.js",
+    "tienda": "node --watch --env-file=.env tienda.js"
   },
   "dependencies": {
-    "daisyui": "^4.12.22",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^7.0.2",
-    "swr": "^2.2.5"
+    "bcrypt": "^5.1.1",
+    "chokidar": "^3.6.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.0",
+    "node-fetch": "^3.3.2",
+    "nunjucks": "^3.2.4",
+    "winston": "^3.16.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.15.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.12.0",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "vite": "^6.0.1"
+    "@types/node": "^22.9.0"
   }
 }

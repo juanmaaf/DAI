@@ -1,0 +1,21 @@
+:80
+
+# Servir archivos estáticos de las carpetas build, public y utils
+handle_path /build/* {
+        root * /usr/share/caddy
+        file_server
+}
+
+handle_path /public/* {
+        root * /usr/share/caddy
+        file_server
+}
+
+handle_path /utils/* {
+        root * /usr/share/caddy
+        file_server
+}
+
+handle_path /* {
+        reverse_proxy tienda:8000
+}

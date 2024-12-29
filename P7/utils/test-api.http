@@ -1,0 +1,23 @@
+GET http://localhost:8000/api/ratings/
+
+###
+
+GET http://localhost:8000/api/ratings/672c775feabd4713c44b119f
+
+###
+
+GET http://localhost:8000/api/ratings?desde=0&hasta=4
+
+###
+
+PUT http://localhost:8000/api/ratings/672c775feabd4713c4
+Content-Type: application/json
+
+{
+  "rate": 4.6,
+  "count": 102
+}
+
+###
+
+GET http://localhost:8000/api/ratings/672c775f
