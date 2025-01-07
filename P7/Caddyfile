@@ -1,21 +1,22 @@
-:80
-
-# Servir archivos estáticos de las carpetas build, public y utils
-handle_path /build/* {
+:80 {
+    # Servir archivos estáticos desde el directorio 'public'
+    handle_path /public/* {
         root * /usr/share/caddy
         file_server
-}
+    }
 
-handle_path /public/* {
+    # Servir archivos estáticos desde el directorio 'utils'
+    handle_path /utils/* {
         root * /usr/share/caddy
         file_server
-}
+    }
 
-handle_path /utils/* {
-        root * /usr/share/caddy
-        file_server
-}
+    handle_path /react/* {
+        reverse_proxy tienda-react:4173 
+    }
 
-handle_path /* {
+    # Proxy para la tienda (Node.js)
+    handle_path /* {
         reverse_proxy tienda:8000
+    }
 }

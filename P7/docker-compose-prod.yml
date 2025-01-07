@@ -5,6 +5,12 @@ services:
       - mongo
       - caddy
     restart: unless-stopped
+  
+  tienda-react:
+    build: ./tienda_P6
+    depends_on:
+      - caddy
+    restart: unless-stopped
     
   mongo:
     image: mongo
@@ -27,7 +33,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./public:/usr/share/caddy
       - ./utils:/usr/share/caddy
-    
+  
 volumes:
   caddy-config:
   caddy-data:

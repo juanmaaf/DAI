@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-card {
+    border-radius: 8px; /* Borde redondeado */
+    padding: 16px; /* Relleno dentro de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centrar contenido */
+}
+
+.img-config {
+    width: 400px; /* Ancho deseado */
+    height: 200px; /* Altura deseada */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+    object-position: center; /* Centra la imagen dentro del contenedor */
+    margin-top: 15px; 
+}
+
+.img-config-detalle {
+    width: 1200px; /* Ancho deseado */
+    height: 600px; /* Altura deseada */
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+    object-position: center; /* Centra la imagen dentro del contenedor */
+    margin-top: 15px; 
+}
+
+.logo-pequeño {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;  /* Asegura que la imagen se ajuste sin perder sus proporciones */
+    margin-right: 0.5rem; /* Espacio a la derecha (ajusta según lo que necesites) */
+}
